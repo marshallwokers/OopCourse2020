@@ -34,39 +34,52 @@ public class Range {
     }
 
     public Range getIntersection(Range range) {
-        if (Math.max(from, range.from) >= Math.min(to, range.to)) {
+        double maxFrom = Math.max(from, range.from);
+        double minTo = Math.min(to, range.to);
+
+        if (maxFrom >= minTo) {
             return null;
         }
 
-        return new Range(Math.max(from, range.from), Math.min(to, range.to));
+        return new Range(maxFrom, minTo);
     }
 
     public Range[] getUnion(Range range) {
-        if (Math.max(from, range.from) > Math.min(to, range.to)) {
-            return new Range[]{new Range(Math.min(from, range.from), Math.min(to, range.to)), new Range(Math.max(from, range.from), Math.max(to, range.to))};
+        double maxFrom = Math.max(from, range.from);
+        double minFrom = Math.min(from, range.from);
+        double minTo = Math.min(to, range.to);
+        double maxTo = Math.min(to, range.to);
+
+        if (maxFrom > minTo) {
+            return new Range[]{new Range(minFrom, minTo), new Range(maxFrom, maxTo)};
         }
 
-        return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
+        return new Range[]{new Range(minFrom, maxTo)};
     }
 
     public Range[] getDifference(Range range) {
-        if (to == range.to & from == range.from) {
+        if (from >= range.from && to <= range.to) {
             return new Range[]{};
         }
 
-        if (Math.max(from, range.from) >= Math.min(to, range.to)) {
-            return new Range[]{new Range(from, to)};
+        if (from < range.from && to > range.to) {
+            return new Range[]{new Range(from, range.from - 1), new Range(range.to + 1, to)};
         }
 
-        if (range.from < to & range.to < to) {
-            return new Range[]{new Range(Math.min(from, range.from), Math.max(from, range.from)), new Range(Math.min(to, range.to), Math.max(to, range.to))};
+
+        if (from < range.from && to < range.to && to > range.from) {
+            return new Range[]{new Range(from, range.from - 1)};
         }
 
-        return new Range[]{new Range(from, range.from)};
+        if (from > range.from && to > range.to && range.to > from) {
+            return new Range[]{new Range(range.to + 1, to)};
+        }
+
+        return new Range[]{new Range(from, to)};
     }
 
     @Override
     public String toString() {
-        return " от " + from + " до " + to;
+        return "(" + from + "; " + to + ")";
     }
 }

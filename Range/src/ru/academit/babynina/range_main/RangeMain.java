@@ -1,20 +1,20 @@
-package ru.academit.babynina.rangemain;
+package ru.academit.babynina.range_main;
 
 import ru.academit.babynina.range.Range;
 
 import java.util.Scanner;
 
 public class RangeMain {
-    private static String print(Range[] ranges) {
+    private static String getResultingString(Range[] ranges) {
         if (ranges.length == 0) {
             return "пуст.";
         }
 
         if (ranges.length == 1) {
-            return "равен:" + ranges[0].toString();
+            return "равен " + ranges[0];
         }
 
-        return "равен:" + ranges[0].toString() + " и" + ranges[1].toString();
+        return "равен " + ranges[0] + " и " + ranges[1];
     }
 
     public static void main(String[] args) {
@@ -40,14 +40,13 @@ public class RangeMain {
         if (intersection == null) {
             System.out.println("Интервалы не имеют пересечений.");
         } else {
-            System.out.println("Интервал-пересечение двух интервалов равен:" + intersection.toString());
-
+            System.out.println("Интервал-пересечение двух интервалов равен " + intersection);
         }
 
         Range[] union = range1.getUnion(range2);
-        System.out.println("Интервал-объединение двух интервалов " + print(union));
+        System.out.println("Интервал-объединение двух интервалов " + getResultingString(union));
 
         Range[] difference = range1.getDifference(range2);
-        System.out.println("Интервал-разность двух интервалов " + print(difference));
+        System.out.println("Интервал-разность двух интервалов " + getResultingString(difference));
     }
 }
