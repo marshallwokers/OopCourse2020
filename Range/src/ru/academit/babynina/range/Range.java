@@ -45,10 +45,10 @@ public class Range {
     }
 
     public Range[] getUnion(Range range) {
-        double maxFrom = Math.max(from, range.from);
         double minFrom = Math.min(from, range.from);
+        double maxFrom = Math.max(from, range.from);
         double minTo = Math.min(to, range.to);
-        double maxTo = Math.min(to, range.to);
+        double maxTo = Math.max(to, range.to);
 
         if (maxFrom > minTo) {
             return new Range[]{new Range(minFrom, minTo), new Range(maxFrom, maxTo)};
@@ -58,21 +58,28 @@ public class Range {
     }
 
     public Range[] getDifference(Range range) {
-        if (from >= range.from && to <= range.to) {
-            return new Range[]{};
+        if (from >= range.from) {
+            if (to <= range.to) {
+                return new Range[]{};
+            }
+
+            if (to > range.to) {
+                if (range.to > from) {
+                    return new Range[]{new Range(range.to, to)};
+                }
+            }
         }
 
-        if (from < range.from && to > range.to) {
-            return new Range[]{new Range(from, range.from - 1), new Range(range.to + 1, to)};
-        }
+        if (from < range.from) {
+            if (to > range.to) {
+                return new Range[]{new Range(from, range.from), new Range(range.to, to)};
+            }
 
-
-        if (from < range.from && to < range.to && to > range.from) {
-            return new Range[]{new Range(from, range.from - 1)};
-        }
-
-        if (from > range.from && to > range.to && range.to > from) {
-            return new Range[]{new Range(range.to + 1, to)};
+            if (to <= range.to) {
+                if (to > range.from) {
+                    return new Range[]{new Range(from, range.from)};
+                }
+            }
         }
 
         return new Range[]{new Range(from, to)};
