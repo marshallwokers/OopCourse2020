@@ -1,6 +1,6 @@
-package ru.academit.babynina.shapes;
+package ru.academit.babynina.shape;
 
-public class Triangle implements Shapes {
+public class Triangle implements Shape {
     private double x1;
     private double y1;
     private double x2;
@@ -87,7 +87,7 @@ public class Triangle implements Shapes {
 
     @Override
     public String toString() {
-        return String.format("треугольник с координатами (%.2f, %.2f), (%.2f, %.2f), (%.2f, %.2f).\nШирина равна %.2f.\nВысота равна %.2f.\nПлощадь равна %.2f.\nПериметр равен %.2f.\nХэш-код равен %d.", x1, y1, x2, y2, x3, y3, getWidth(), getHeight(), getArea(), getPerimeter(), hashCode());
+        return String.format("[ Треугольник с координатами (%.2f, %.2f), (%.2f, %.2f), (%.2f, %.2f). Площадь = %.2f. Периметр = %.2f. ]", x1, y1, x2, y2, x3, y3, getArea(), getPerimeter());
     }
 
     @Override
@@ -109,7 +109,7 @@ public class Triangle implements Shapes {
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 

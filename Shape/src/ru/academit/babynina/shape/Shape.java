@@ -1,6 +1,6 @@
-package ru.academit.babynina.shapes;
+package ru.academit.babynina.shape;
 
-public interface Shapes {
+public interface Shape {
     double getWidth();
 
     double getHeight();

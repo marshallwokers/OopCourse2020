@@ -1,6 +1,6 @@
-package ru.academit.babynina.shapes;
+package ru.academit.babynina.shape;
 
-public class Square implements Shapes {
+public class Square implements Shape {
     private double sideLength;
 
     public Square(double sideLength) {
@@ -27,7 +27,7 @@ public class Square implements Shapes {
 
     @Override
     public double getArea() {
-        return Math.pow(sideLength, 2);
+        return sideLength * sideLength;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Square implements Shapes {
 
     @Override
     public String toString() {
-        return String.format("квадрат с длиной стороны %.2f.\nШирина равна %.2f.\nВысота равна %.2f.\nПлощадь равна %.2f.\nПериметр равен %.2f.\nХэш-код равен %d.", sideLength, getWidth(), getHeight(), getArea(), getPerimeter(), hashCode());
+        return String.format("[ Квадрат с длиной стороны %.2f. Площадь = %.2f. Периметр = %.2f. ]", sideLength, getArea(), getPerimeter());
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Square implements Shapes {
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 
