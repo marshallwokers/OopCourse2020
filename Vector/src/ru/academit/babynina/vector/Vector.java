@@ -27,17 +27,17 @@ public class Vector {
     //заполнение вектора значениями из массив
     public Vector(double[] vectorComponents) {
         n = vectorComponents.length;
-        this.components = vectorComponents;
+        components = vectorComponents;
     }
 
     //заполнение вектора значениями из массива. Если длина массива меньше n, то считать что в остальных компонентах 0
     public Vector(int n, double[] vectorComponents) {
         this(n);
-        System.arraycopy(vectorComponents, 0, this.components, 0, vectorComponents.length);
+        System.arraycopy(vectorComponents, 0, components, 0, vectorComponents.length);
 
         if (vectorComponents.length < n) {
             for (int i = vectorComponents.length; i < n; ++i) {
-                this.components[i] = 0;
+                components[i] = 0;
             }
         }
     }
@@ -175,7 +175,7 @@ public class Vector {
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 

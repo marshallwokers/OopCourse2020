@@ -37,14 +37,16 @@ public class Square implements Shape {
 
     @Override
     public String toString() {
-        return String.format("[ Квадрат с длиной стороны %.2f. Площадь = %.2f. Периметр = %.2f. ]", sideLength, getArea(), getPerimeter());
+        return String.format("{ Квадрат с длиной стороны %.2f. Площадь = %.2f. Периметр = %.2f. }", sideLength, getArea(), getPerimeter());
     }
 
     @Override
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
+
         hash = (prime * hash) + Double.hashCode(sideLength);
+
         return hash;
     }
 

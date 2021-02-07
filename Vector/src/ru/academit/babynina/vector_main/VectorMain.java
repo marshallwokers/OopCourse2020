@@ -1,4 +1,4 @@
-package ru.academit.babynina.vectormain;
+package ru.academit.babynina.vector_main;
 
 import ru.academit.babynina.vector.Vector;
 
@@ -10,9 +10,10 @@ public class VectorMain {
         Vector vector4 = new Vector(new double[]{6.0, 5.0, 4.0, 3.0, 2.0, 1.0});
 
         System.out.println("vector1 : " + vector1);
-        System.out.println("vector2 : " + vector1);
-        System.out.println("vector3 : " + vector1);
-        System.out.println("vector4 : " + vector1 + "\n\n");
+        System.out.println("vector2 : " + vector2);
+        System.out.println("vector3 : " + vector3);
+        System.out.println("vector4 : " + vector4);
+        System.out.println();
         System.out.println("vector2 после прибавления к нему vector4 равен : " + vector2.sum(vector4));
         System.out.println("vector1 после вычитания из него vector2 равен : " + vector1.subtract(vector2));
         System.out.println("vector2 после умножения на скаляр 3 равен : " + vector2.multiply(3));

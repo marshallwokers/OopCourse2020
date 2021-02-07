@@ -20,6 +20,10 @@ public class ShapeMain {
             return null;
         }
 
+        if (shapes.length == 1) {
+            return shapes[0];
+        }
+
         Arrays.sort(shapes, new PerimeterComparator());
 
         return shapes[shapes.length - 2];
@@ -34,7 +38,8 @@ public class ShapeMain {
                 new Square(15),
                 new Triangle(0, -1, 0, 5, 34, 0),
                 new Rectangle(13, 17),
-                new Circle(6)};
+                new Circle(6)
+        };
 
         if (getMaxAreaShape(shapes) == null || getSecondMaxPerimeterShape(shapes) == null) {
             System.out.println("Массив фигур пуст.");

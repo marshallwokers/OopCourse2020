@@ -80,26 +80,33 @@ public class Triangle implements Shape {
         return Math.abs((x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1)) / 2;
     }
 
+    private double getSideLength(double x1, double y1, double x2, double y2) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    }
+
     @Override
     public double getPerimeter() {
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) + Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2)) + Math.sqrt(Math.pow(x3 - x2, 2) + Math.pow(y3 - y2, 2));
+        return getSideLength(x1, y1, x2, y2) + getSideLength(x1, y1, x3, y3) + getSideLength(x2, y2, x3, y3);
     }
 
     @Override
     public String toString() {
-        return String.format("[ Треугольник с координатами (%.2f, %.2f), (%.2f, %.2f), (%.2f, %.2f). Площадь = %.2f. Периметр = %.2f. ]", x1, y1, x2, y2, x3, y3, getArea(), getPerimeter());
+        return String.format("{ Треугольник с координатами (%.2f, %.2f), (%.2f, %.2f), (%.2f, %.2f). Площадь = %.2f. Периметр = %.2f. }",
+                x1, y1, x2, y2, x3, y3, getArea(), getPerimeter());
     }
 
     @Override
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
+
         hash = (prime * hash) + Double.hashCode(x1);
         hash = (prime * hash) + Double.hashCode(y1);
         hash = (prime * hash) + Double.hashCode(x2);
         hash = (prime * hash) + Double.hashCode(y2);
         hash = (prime * hash) + Double.hashCode(x3);
         hash = (prime * hash) + Double.hashCode(y3);
+
         return hash;
     }
 
