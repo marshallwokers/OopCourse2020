@@ -14,15 +14,15 @@ public class VectorMain {
         System.out.println("vector3 : " + vector3);
         System.out.println("vector4 : " + vector4);
         System.out.println();
-        System.out.println("vector2 после прибавления к нему vector4 равен : " + vector2.sum(vector4));
-        System.out.println("vector1 после вычитания из него vector2 равен : " + vector1.subtract(vector2));
+        System.out.println("vector2 после прибавления к нему vector4 равен : " + vector2.getSum(vector4));
+        System.out.println("vector1 после вычитания из него vector2 равен : " + vector1.getSubtract(vector2));
         System.out.println("vector2 после умножения на скаляр 3 равен : " + vector2.multiply(3));
-        System.out.println("Развернутый vector1 : " + vector1.inverse());
+        System.out.println("Развернутый vector1 : " + vector1.getInverseVector());
         System.out.println("Длина vector3 равна: " + vector3.getLength());
-        vector4.setVectorComponentByIndex(0, 10.0);
-        System.out.println("Компонент vector4 по индексу 0 равен: " + vector4.getVectorComponentByIndex(0));
+        vector4.setComponent(0, 10.0);
+        System.out.println("Компонент vector4 по индексу 0 равен: " + vector4.getComponent(0));
         System.out.println("Хэш-код vector4 равен: " + vector4.hashCode());
-        Vector sumResultVector = Vector.getSumResultVector(vector1, vector2);
+        Vector sumResultVector = Vector.getSum(vector1, vector2);
         System.out.println("Результирующий вектор сложения векторов vector1 и vector2 равен: " + sumResultVector);
 
         if (sumResultVector.equals(vector1)) {
@@ -31,7 +31,7 @@ public class VectorMain {
             System.out.println("Векторы sumResultVector и vector1 не равны");
         }
 
-        System.out.println("Результирующий вектор вычитания векторов sumResultVector и vector1 равен: " + Vector.getSubtractResultVector(sumResultVector, vector1));
-        System.out.println("Результирующий вектор скалярного произведения векторов sumResultVector и vector1 равен: " + Vector.getMultiplyResultVector(sumResultVector, vector3));
+        System.out.println("Результирующий вектор вычитания векторов sumResultVector и vector1 равен: " + Vector.getSubtract(sumResultVector, vector1));
+        System.out.println("Результирующий вектор скалярного произведения векторов sumResultVector и vector3 равен: " + Vector.getScalarProduct(sumResultVector, vector3));
     }
 }
