@@ -13,13 +13,13 @@ public class Rectangle implements Shape {
         this.width = width;
     }
 
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
     @Override
     public double getWidth() {
         return width;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
     }
 
     @Override
@@ -39,17 +39,15 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return String.format("{ Прямоугольник с шириной %.2f и высотой %.2f. Площадь = %.2f. Периметр = %.2f. }", width, height, getArea(), getPerimeter());
+        return String.format("[ Прямоуольник со сторонами %.2f и %.2f. Площадь = %.2f. Периметр = %.2f. ]", width, height, getArea(), getPerimeter());
     }
 
     @Override
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
-
         hash = (prime * hash) + Double.hashCode(width);
         hash = (prime * hash) + Double.hashCode(height);
-
         return hash;
     }
 
