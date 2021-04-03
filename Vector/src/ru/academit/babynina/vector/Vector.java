@@ -39,7 +39,7 @@ public class Vector {
                     vectorComponents.length + ". Vector dimension must be more than array length.");
         }
 
-        components = Arrays.copyOf(vectorComponents, vectorComponents.length);
+        components = Arrays.copyOf(vectorComponents, vectorDimension);
     }
 
     //Получить размерность вектора
